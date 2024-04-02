@@ -148,3 +148,4 @@ D:\My_Pro\My_Pro\obj\Debug\net8.0\ref\My_Pro.dll
 D:\My_Pro\My_Pro\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\My_Pro\My_Pro\bin\Debug\net8.0\MailKit.dll
 D:\My_Pro\My_Pro\bin\Debug\net8.0\MimeKit.dll
+D:\My_pro\My_Pro\obj\Debug\net8.0\My_Pro.sourcelink.json
