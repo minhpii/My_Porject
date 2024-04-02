@@ -1,5 +1,5 @@
 ﻿using My_Pro.Data;
-using System.Runtime.ConstrainedExecution;
+using static My_Pro.Data.Enum;
 
 namespace My_Pro.Model
 {
@@ -10,6 +10,7 @@ namespace My_Pro.Model
         public int RoomTypeId { get; set; }
         public RoomType? RoomTypes { get; set; }
         public decimal PricePerNight { get; set; }
-        public ICollection<RoomImage> Images { get; set; }
+        public ICollection<RoomImage>? Images { get; set; }
+        public RoomStatus Status { get; set; }
     }
 }

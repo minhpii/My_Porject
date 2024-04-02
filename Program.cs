@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using My_Pro.Bussiness.AuthServices;
+using My_Pro.Bussiness.RoomImageServices;
+using My_Pro.Bussiness.RoomTypeServices;
 using My_Pro.Data;
 using My_Pro.Model;
 using System.Text;
@@ -17,6 +19,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddScoped<IAuthServices, AuthServices>();
+builder.Services.AddScoped<IRoomImageServices, RoomImageServices>();
+builder.Services.AddScoped<IRoomTypeServices, RoomTypeServices>();
+builder.Services.AddScoped<IRoomServices, RoomServices>();
 
 // Connect SQL && Identity
 builder.Services.AddDbContext<AppDbContext>(options =>

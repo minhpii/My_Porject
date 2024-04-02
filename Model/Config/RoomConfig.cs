@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using static My_Pro.Data.Enum;
 
 namespace My_Pro.Model.Config
 {
@@ -16,7 +17,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 101",
                        Description = "Phòng 101",
                        RoomTypeId = 1,
-                       PricePerNight = 150
+                       PricePerNight = 150,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -24,7 +26,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 102",
                        Description = "Phòng 102",
                        RoomTypeId = 1,
-                       PricePerNight = 150
+                       PricePerNight = 150,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -32,7 +35,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 103",
                        Description = "Phòng 103",
                        RoomTypeId = 1,
-                       PricePerNight = 200
+                       PricePerNight = 200,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -40,7 +44,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 104",
                        Description = "Phòng 104",
                        RoomTypeId = 1,
-                       PricePerNight = 200
+                       PricePerNight = 200,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -48,7 +53,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 201",
                        Description = "Phòng 201",
                        RoomTypeId = 2,
-                       PricePerNight = 250
+                       PricePerNight = 250,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -56,7 +62,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 202",
                        Description = "Phòng 202",
                        RoomTypeId = 2,
-                       PricePerNight = 250
+                       PricePerNight = 250,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -64,7 +71,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 203",
                        Description = "Phòng 203",
                        RoomTypeId = 2,
-                       PricePerNight = 300
+                       PricePerNight = 300,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -72,7 +80,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 301",
                        Description = "Phòng 301",
                        RoomTypeId = 3,
-                       PricePerNight = 350
+                       PricePerNight = 350,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -80,7 +89,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 302",
                        Description = "Phòng 302",
                        RoomTypeId = 3,
-                       PricePerNight = 350
+                       PricePerNight = 350,
+                       Status = RoomStatus.ConPhong
                    },
                    new Room
                    {
@@ -88,7 +98,8 @@ namespace My_Pro.Model.Config
                        Name = "Phòng 401",
                        Description = "Phòng 401",
                        RoomTypeId = 4,
-                       PricePerNight = 400
+                       PricePerNight = 400,
+                       Status = RoomStatus.ConPhong
                    });
         }
     }

@@ -255,6 +255,9 @@ namespace My_Pro.Migrations
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoomTypeId");
@@ -269,7 +272,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 101",
                             PricePerNight = 150m,
-                            RoomTypeId = 1
+                            RoomTypeId = 1,
+                            Status = 1
                         },
                         new
                         {
@@ -278,7 +282,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 102",
                             PricePerNight = 150m,
-                            RoomTypeId = 1
+                            RoomTypeId = 1,
+                            Status = 1
                         },
                         new
                         {
@@ -287,7 +292,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 103",
                             PricePerNight = 200m,
-                            RoomTypeId = 1
+                            RoomTypeId = 1,
+                            Status = 1
                         },
                         new
                         {
@@ -296,7 +302,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 104",
                             PricePerNight = 200m,
-                            RoomTypeId = 1
+                            RoomTypeId = 1,
+                            Status = 1
                         },
                         new
                         {
@@ -305,7 +312,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 201",
                             PricePerNight = 250m,
-                            RoomTypeId = 2
+                            RoomTypeId = 2,
+                            Status = 1
                         },
                         new
                         {
@@ -314,7 +322,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 202",
                             PricePerNight = 250m,
-                            RoomTypeId = 2
+                            RoomTypeId = 2,
+                            Status = 1
                         },
                         new
                         {
@@ -323,7 +332,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 203",
                             PricePerNight = 300m,
-                            RoomTypeId = 2
+                            RoomTypeId = 2,
+                            Status = 1
                         },
                         new
                         {
@@ -332,7 +342,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 301",
                             PricePerNight = 350m,
-                            RoomTypeId = 3
+                            RoomTypeId = 3,
+                            Status = 1
                         },
                         new
                         {
@@ -341,7 +352,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 302",
                             PricePerNight = 350m,
-                            RoomTypeId = 3
+                            RoomTypeId = 3,
+                            Status = 1
                         },
                         new
                         {
@@ -350,7 +362,8 @@ namespace My_Pro.Migrations
                             IsDeleted = false,
                             Name = "Phòng 401",
                             PricePerNight = 400m,
-                            RoomTypeId = 4
+                            RoomTypeId = 4,
+                            Status = 1
                         });
                 });
 
