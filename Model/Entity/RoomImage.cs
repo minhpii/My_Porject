@@ -1,6 +1,6 @@
 ﻿using My_Pro.Data;
 
-namespace My_Pro.Model
+namespace My_Pro.Model.Entity
 {
     public class RoomImage : BaseEntity
     {

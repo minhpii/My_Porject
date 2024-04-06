@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using My_Pro.Model.Entity;
 using static My_Pro.Data.Enum;
 
 namespace My_Pro.Model.Config

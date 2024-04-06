@@ -1,5 +1,5 @@
 ﻿using My_Pro.Model.DTO;
-using My_Pro.Model.Request;
+using My_Pro.Model.Entity;
 using static My_Pro.Data.Enum;
 
 namespace My_Pro.Bussiness.RoomImageServices

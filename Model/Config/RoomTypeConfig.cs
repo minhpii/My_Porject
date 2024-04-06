@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using My_Pro.Data;
+using My_Pro.Model.Entity;
 
 namespace My_Pro.Model.Config
 {

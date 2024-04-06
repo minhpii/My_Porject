@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using My_Pro.Data;
-using My_Pro.Model;
+using My_Pro.Model.Entity;
 
 namespace My_Pro.Bussiness.RoomImageServices
 {

@@ -1,7 +1,7 @@
 ﻿using My_Pro.Data;
 using static My_Pro.Data.Enum;
 
-namespace My_Pro.Model
+namespace My_Pro.Model.Entity
 {
     public class Room : BaseEntity
     {

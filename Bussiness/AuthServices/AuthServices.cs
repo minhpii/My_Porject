@@ -8,6 +8,7 @@ using MimeKit.Text;
 using My_Pro.Data;
 using My_Pro.Model;
 using My_Pro.Model.DTO;
+using My_Pro.Model.Entity;
 using My_Pro.Model.Request;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

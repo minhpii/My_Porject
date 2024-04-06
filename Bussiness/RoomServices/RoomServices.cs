@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using My_Pro.Data;
-using My_Pro.Model;
 using My_Pro.Model.DTO;
-using My_Pro.Model.Request;
+using My_Pro.Model.Entity;
 using static My_Pro.Data.Enum;
 
 namespace My_Pro.Bussiness.RoomImageServices
@@ -105,7 +104,7 @@ namespace My_Pro.Bussiness.RoomImageServices
                 {
                     Id = room.RoomTypes.Id,
                     Name = room.RoomTypes.Name,
-                    Description = room.RoomTypes.Description
+                    Description= room.Description,
                 },
                 Images = room.Images.Select(ri => new RoomImageDTO
                 {

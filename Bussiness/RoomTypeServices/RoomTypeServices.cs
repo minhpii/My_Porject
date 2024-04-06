@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using My_Pro.Data;
-using My_Pro.Model;
 using My_Pro.Model.DTO;
+using My_Pro.Model.Entity;
 using My_Pro.Model.Request;
 
 namespace My_Pro.Bussiness.RoomTypeServices

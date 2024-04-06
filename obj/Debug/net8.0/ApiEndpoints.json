@@ -127,6 +127,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "My_Pro.Controllers.BookingController",
+    "Method": "Create",
+    "RelativePath": "api/Booking/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.BookingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.BookingController",
+    "Method": "Delete",
+    "RelativePath": "api/Booking/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.BookingController",
+    "Method": "GetById",
+    "RelativePath": "api/Booking/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.BookingController",
+    "Method": "GetList",
+    "RelativePath": "api/Booking/GetList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "totalStart",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "totalEnd",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.BookingController",
+    "Method": "Update",
+    "RelativePath": "api/Booking/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.BookingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "My_Pro.Controllers.RoomController",
     "Method": "Create",
     "RelativePath": "api/Room/Create",
@@ -136,7 +226,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "My_Pro.Model.Request.RoomRequest",
+        "Type": "My_Pro.Model.Entity.RoomRequest",
         "IsRequired": true
       }
     ],
@@ -205,7 +295,7 @@
       },
       {
         "Name": "request",
-        "Type": "My_Pro.Model.Request.RoomRequest",
+        "Type": "My_Pro.Model.Entity.RoomRequest",
         "IsRequired": true
       }
     ],
@@ -350,6 +440,176 @@
         "Name": "request",
         "Type": "My_Pro.Model.Request.RoomTypeRequest",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceController",
+    "Method": "Create",
+    "RelativePath": "api/Service/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.ServiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceController",
+    "Method": "Delete",
+    "RelativePath": "api/Service/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceController",
+    "Method": "GetById",
+    "RelativePath": "api/Service/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceController",
+    "Method": "GetList",
+    "RelativePath": "api/Service/GetList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceController",
+    "Method": "Update",
+    "RelativePath": "api/Service/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.ServiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceTypeController",
+    "Method": "Update",
+    "RelativePath": "api/ServiceType",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.ServiceTypeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceTypeController",
+    "Method": "Delete",
+    "RelativePath": "api/ServiceType",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceTypeController",
+    "Method": "Create",
+    "RelativePath": "api/ServiceType/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "My_Pro.Model.Request.ServiceTypeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceTypeController",
+    "Method": "GetById",
+    "RelativePath": "api/ServiceType/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "My_Pro.Controllers.ServiceTypeController",
+    "Method": "GetList",
+    "RelativePath": "api/ServiceType/GetList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

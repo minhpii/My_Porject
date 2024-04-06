@@ -71,6 +71,21 @@ namespace My_Pro.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ServiceTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -201,6 +216,59 @@ namespace My_Pro.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Services",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ServiceTypeId = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Services", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Services_ServiceTypes_ServiceTypeId",
+                        column: x => x.ServiceTypeId,
+                        principalTable: "ServiceTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_AspNetUsers_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoomImages",
                 columns: table => new
                 {
@@ -218,6 +286,33 @@ namespace My_Pro.Migrations
                         name: "FK_RoomImages_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BookingServices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingId = table.Column<int>(type: "int", nullable: false),
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookingServices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BookingServices_Bookings_BookingId",
+                        column: x => x.BookingId,
+                        principalTable: "Bookings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookingServices_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -240,6 +335,23 @@ namespace My_Pro.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "ServiceTypes",
+                columns: new[] { "Id", "Description", "IsDeleted", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Dịch vụ liên quan đến ẩm thực và nhà hàng.", false, "Ăn uống" },
+                    { 2, "Dịch vụ giải trí như karaoke, rạp chiếu phim, v.v.", false, "Giải trí" },
+                    { 3, "Các tiện ích như hồ bơi, phòng tập thể dục, spa.", false, "Tiện ích" },
+                    { 4, "Các dịch vụ hỗ trợ kinh doanh như phòng họp, dịch vụ in ấn.", false, "Dịch vụ kinh doanh" },
+                    { 5, "Các dịch vụ được cung cấp trực tiếp trong phòng như dịch vụ phòng ăn, room service.", false, "Dịch vụ phòng" },
+                    { 6, "Cung cấp dịch vụ đặt tour, hỗ trợ du lịch.", false, "Dịch vụ du lịch" },
+                    { 7, "Cung cấp dịch vụ đưa đón sân bay, thuê xe.", false, "Dịch vụ vận chuyển" },
+                    { 8, "Các dịch vụ liên quan đến tổ chức hội nghị, sự kiện.", false, "Dịch vụ hội nghị" },
+                    { 9, "Dịch vụ internet", false, "Dịch vụ internet" },
+                    { 10, "Dịch vụ giặt ủi quần áo của khách.", false, "Dịch vụ giặt là" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Rooms",
                 columns: new[] { "Id", "Description", "IsDeleted", "Name", "PricePerNight", "RoomTypeId", "Status" },
                 values: new object[,]
@@ -254,6 +366,23 @@ namespace My_Pro.Migrations
                     { 8, "Phòng 301", false, "Phòng 301", 350m, 3, 1 },
                     { 9, "Phòng 302", false, "Phòng 302", 350m, 3, 1 },
                     { 10, "Phòng 401", false, "Phòng 401", 400m, 4, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Services",
+                columns: new[] { "Id", "Description", "IsDeleted", "Name", "Price", "ServiceTypeId" },
+                values: new object[,]
+                {
+                    { 1, "Một loạt các lựa chọn sáng", false, "Buffet Sáng", 15m, 1 },
+                    { 2, "Truy cập vào hồ bơi của khách sạn", false, "Tiện ích Hồ Bơi", 10m, 3 },
+                    { 3, "Massage thư giãn tại spa của khách sạn", false, "Massage Spa", 50m, 2 },
+                    { 4, "Thuê phòng họp cho các cuộc họp", false, "Thuê Phòng Họp", 100m, 4 },
+                    { 5, "Dịch vụ làm sạch hàng ngày cho phòng", false, "Dịch vụ vệ sinh phòng", 20m, 5 },
+                    { 6, "Dịch vụ vận chuyển từ/đến sân bay", false, "Đưa đón sân bay", 30m, 7 },
+                    { 7, "Truy cập vào phòng tập gym của khách sạn", false, "Truy cập Phòng Tập Gym", 15m, 3 },
+                    { 8, "Dịch vụ giặt ủi cho quần áo của khách", false, "Dịch vụ Giặt là", 25m, 10 },
+                    { 9, "Truy cập internet tốc độ cao trong phòng", false, "Internet tốc độ cao", 5m, 9 },
+                    { 10, "Gói tour tham quan thành phố", false, "Gói Tour Thành Phố", 75m, 6 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -296,6 +425,26 @@ namespace My_Pro.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bookings_RoomId",
+                table: "Bookings",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_UsersId",
+                table: "Bookings",
+                column: "UsersId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookingServices_BookingId",
+                table: "BookingServices",
+                column: "BookingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookingServices_ServiceId",
+                table: "BookingServices",
+                column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RoomImages_RoomId",
                 table: "RoomImages",
                 column: "RoomId");
@@ -304,6 +453,11 @@ namespace My_Pro.Migrations
                 name: "IX_Rooms_RoomTypeId",
                 table: "Rooms",
                 column: "RoomTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Services_ServiceTypeId",
+                table: "Services",
+                column: "ServiceTypeId");
         }
 
         /// <inheritdoc />
@@ -325,16 +479,28 @@ namespace My_Pro.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BookingServices");
+
+            migrationBuilder.DropTable(
                 name: "RoomImages");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Bookings");
+
+            migrationBuilder.DropTable(
+                name: "Services");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Rooms");
+
+            migrationBuilder.DropTable(
+                name: "ServiceTypes");
 
             migrationBuilder.DropTable(
                 name: "RoomTypes");

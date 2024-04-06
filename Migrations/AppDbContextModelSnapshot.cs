@@ -155,7 +155,7 @@ namespace My_Pro.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("My_Pro.Model.ApplicationUser", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -231,7 +231,69 @@ namespace My_Pro.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("My_Pro.Model.Room", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.Booking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOutDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UsersId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.BookingService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("BookingServices");
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -367,7 +429,7 @@ namespace My_Pro.Migrations
                         });
                 });
 
-            modelBuilder.Entity("My_Pro.Model.RoomImage", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.RoomImage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -396,7 +458,7 @@ namespace My_Pro.Migrations
                     b.ToTable("RoomImages");
                 });
 
-            modelBuilder.Entity("My_Pro.Model.RoomType", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.RoomType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -491,6 +553,224 @@ namespace My_Pro.Migrations
                         });
                 });
 
+            modelBuilder.Entity("My_Pro.Model.Entity.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ServiceTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceTypeId");
+
+                    b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Một loạt các lựa chọn sáng",
+                            IsDeleted = false,
+                            Name = "Buffet Sáng",
+                            Price = 15m,
+                            ServiceTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Truy cập vào hồ bơi của khách sạn",
+                            IsDeleted = false,
+                            Name = "Tiện ích Hồ Bơi",
+                            Price = 10m,
+                            ServiceTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Massage thư giãn tại spa của khách sạn",
+                            IsDeleted = false,
+                            Name = "Massage Spa",
+                            Price = 50m,
+                            ServiceTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Thuê phòng họp cho các cuộc họp",
+                            IsDeleted = false,
+                            Name = "Thuê Phòng Họp",
+                            Price = 100m,
+                            ServiceTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Dịch vụ làm sạch hàng ngày cho phòng",
+                            IsDeleted = false,
+                            Name = "Dịch vụ vệ sinh phòng",
+                            Price = 20m,
+                            ServiceTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Dịch vụ vận chuyển từ/đến sân bay",
+                            IsDeleted = false,
+                            Name = "Đưa đón sân bay",
+                            Price = 30m,
+                            ServiceTypeId = 7
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Truy cập vào phòng tập gym của khách sạn",
+                            IsDeleted = false,
+                            Name = "Truy cập Phòng Tập Gym",
+                            Price = 15m,
+                            ServiceTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Dịch vụ giặt ủi cho quần áo của khách",
+                            IsDeleted = false,
+                            Name = "Dịch vụ Giặt là",
+                            Price = 25m,
+                            ServiceTypeId = 10
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Truy cập internet tốc độ cao trong phòng",
+                            IsDeleted = false,
+                            Name = "Internet tốc độ cao",
+                            Price = 5m,
+                            ServiceTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Gói tour tham quan thành phố",
+                            IsDeleted = false,
+                            Name = "Gói Tour Thành Phố",
+                            Price = 75m,
+                            ServiceTypeId = 6
+                        });
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Dịch vụ liên quan đến ẩm thực và nhà hàng.",
+                            IsDeleted = false,
+                            Name = "Ăn uống"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Dịch vụ giải trí như karaoke, rạp chiếu phim, v.v.",
+                            IsDeleted = false,
+                            Name = "Giải trí"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Các tiện ích như hồ bơi, phòng tập thể dục, spa.",
+                            IsDeleted = false,
+                            Name = "Tiện ích"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Các dịch vụ hỗ trợ kinh doanh như phòng họp, dịch vụ in ấn.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ kinh doanh"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Các dịch vụ được cung cấp trực tiếp trong phòng như dịch vụ phòng ăn, room service.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ phòng"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Cung cấp dịch vụ đặt tour, hỗ trợ du lịch.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ du lịch"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Cung cấp dịch vụ đưa đón sân bay, thuê xe.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ vận chuyển"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Các dịch vụ liên quan đến tổ chức hội nghị, sự kiện.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ hội nghị"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Dịch vụ internet",
+                            IsDeleted = false,
+                            Name = "Dịch vụ internet"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Dịch vụ giặt ủi quần áo của khách.",
+                            IsDeleted = false,
+                            Name = "Dịch vụ giặt là"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -502,7 +782,7 @@ namespace My_Pro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("My_Pro.Model.ApplicationUser", null)
+                    b.HasOne("My_Pro.Model.Entity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -511,7 +791,7 @@ namespace My_Pro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("My_Pro.Model.ApplicationUser", null)
+                    b.HasOne("My_Pro.Model.Entity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -526,7 +806,7 @@ namespace My_Pro.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("My_Pro.Model.ApplicationUser", null)
+                    b.HasOne("My_Pro.Model.Entity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -535,17 +815,55 @@ namespace My_Pro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("My_Pro.Model.ApplicationUser", null)
+                    b.HasOne("My_Pro.Model.Entity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("My_Pro.Model.Room", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.Booking", b =>
                 {
-                    b.HasOne("My_Pro.Model.RoomType", "RoomTypes")
-                        .WithMany("Rooms")
+                    b.HasOne("My_Pro.Model.Entity.Room", "Rooms")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("My_Pro.Model.Entity.ApplicationUser", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rooms");
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.BookingService", b =>
+                {
+                    b.HasOne("My_Pro.Model.Entity.Booking", "Bookings")
+                        .WithMany("BookingServices")
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("My_Pro.Model.Entity.Service", "Services")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.Room", b =>
+                {
+                    b.HasOne("My_Pro.Model.Entity.RoomType", "RoomTypes")
+                        .WithMany()
                         .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -553,9 +871,9 @@ namespace My_Pro.Migrations
                     b.Navigation("RoomTypes");
                 });
 
-            modelBuilder.Entity("My_Pro.Model.RoomImage", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.RoomImage", b =>
                 {
-                    b.HasOne("My_Pro.Model.Room", "Rooms")
+                    b.HasOne("My_Pro.Model.Entity.Room", "Rooms")
                         .WithMany("Images")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -564,14 +882,25 @@ namespace My_Pro.Migrations
                     b.Navigation("Rooms");
                 });
 
-            modelBuilder.Entity("My_Pro.Model.Room", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.Service", b =>
                 {
-                    b.Navigation("Images");
+                    b.HasOne("My_Pro.Model.Entity.ServiceType", "ServiceType")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ServiceType");
                 });
 
-            modelBuilder.Entity("My_Pro.Model.RoomType", b =>
+            modelBuilder.Entity("My_Pro.Model.Entity.Booking", b =>
                 {
-                    b.Navigation("Rooms");
+                    b.Navigation("BookingServices");
+                });
+
+            modelBuilder.Entity("My_Pro.Model.Entity.Room", b =>
+                {
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,6 +11,6 @@ namespace My_Pro.Model.DTO
         public RoomTypeDTO? RoomTypes { get; set; }
         public decimal PricePerNight { get; set; }
         public RoomStatus Status { get; set; }
-        public ICollection<RoomImageDTO> Images { get; set; }
+        public List<RoomImageDTO> Images { get; set; }
     }
 }

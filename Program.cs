@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using My_Pro.Bussiness.AuthServices;
+using My_Pro.Bussiness.BookingServices;
 using My_Pro.Bussiness.RoomImageServices;
 using My_Pro.Bussiness.RoomTypeServices;
+using My_Pro.Bussiness.ServiceServices;
+using My_Pro.Bussiness.ServiceTypeServices;
 using My_Pro.Data;
-using My_Pro.Model;
+using My_Pro.Model.Entity;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +25,9 @@ builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IRoomImageServices, RoomImageServices>();
 builder.Services.AddScoped<IRoomTypeServices, RoomTypeServices>();
 builder.Services.AddScoped<IRoomServices, RoomServices>();
+builder.Services.AddScoped<IServiceTypeServices, ServiceTypeServices>();
+builder.Services.AddScoped<IServiceServices, ServiceServices>();
+builder.Services.AddScoped<IBookingServices, BookingServices>();
 
 // Connect SQL && Identity
 builder.Services.AddDbContext<AppDbContext>(options =>

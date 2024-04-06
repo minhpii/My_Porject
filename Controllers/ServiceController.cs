@@ -1,25 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using My_Pro.Bussiness.RoomImageServices;
-using My_Pro.Model.Entity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using My_Pro.Bussiness.ServiceServices;
 using My_Pro.Model.Request;
-using static My_Pro.Data.Enum;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace My_Pro.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : ControllerBase
+    public class ServiceController : ControllerBase
     {
-        private readonly IRoomServices _roomService;
-        public RoomController(IRoomServices roomService)
+        private readonly IServiceServices _serviceServices;
+        public ServiceController(IServiceServices serviceServices)
         {
-            _roomService = roomService;
+            _serviceServices = serviceServices;
         }
-
         [HttpGet("GetList")]
         public async Task<IActionResult> GetList(string? keyword)
         {
-            var res = await _roomService.GetList(keyword);
+            var res = await _serviceServices.GetList(keyword);
             if (res == null)
             {
                 return NotFound();
@@ -32,7 +31,7 @@ namespace My_Pro.Controllers
         {
             try
             {
-                var res = await _roomService.GetById(id);
+                var res = await _serviceServices.GetById(id);
                 return Ok(res);
             }
             catch (AggregateException ex)
@@ -42,11 +41,11 @@ namespace My_Pro.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(RoomRequest request)
+        public async Task<IActionResult> Create(ServiceRequest request)
         {
             try
             {
-                var res = await _roomService.Create(request);
+                var res = await _serviceServices.Create(request);
                 return Ok(res);
             }
             catch (AggregateException ex)
@@ -56,25 +55,11 @@ namespace My_Pro.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(int id,RoomRequest request)
+        public async Task<IActionResult> Update(int id, ServiceRequest request)
         {
             try
             {
-                var res = await _roomService.Update(id,request);
-                return Ok(res);
-            }
-            catch (AggregateException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPut("UpdateRoomStatus")]
-        public async Task<IActionResult> UpdateRoomStatus(int id, RoomStatus status)
-        {
-            try
-            {
-                var res = await _roomService.UpdateRoomStatus(id, status);
+                var res = await _serviceServices.Update(id, request);
                 return Ok(res);
             }
             catch (AggregateException ex)
@@ -88,7 +73,7 @@ namespace My_Pro.Controllers
         {
             try
             {
-                var res = await _roomService.Delete(id);
+                var res = await _serviceServices.Delete(id);
                 return Ok(res);
             }
             catch (AggregateException ex)
